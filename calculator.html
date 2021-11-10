@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+	<head>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta charset="UTF-8" />
+		<title>SEIU503 Local 503 | In it together</title>
+		<meta property="og:title" content="SEIU Local 503" />
+		<meta property="og:description" content="In it together" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://seiu503.org" />
+		<meta property="og:site_name" content="SEIU Local 503" />
+		<meta property="og:image" content="http://seiu503.org/wp-content/uploads/2017/11/facebook_logo.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:title" content="SEIU Local 503" />
+		<meta name="twitter:description" content="In it together" />
+		<meta name="twitter:image" content="http://seiu503.org/wp-content/uploads/2017/11/facebook_logo.png" />
+		<meta name="twitter:site" content="@SEIULocal503" />
+		<meta name="twitter:creator" content="@SEIULocal503" />
+		<script src="script.js" />
+		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+		<script defer src="https://kit.fontawesome.com/72276a245c.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/v4-shims.css">
+		<link rel='stylesheet' id='every-action-css'  href='style.css' type='text/css' media='all' />
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Orbitron|Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+		<link rel="stylesheet" id="theme-style-css" href="https://seiu503.org/wp-content/themes/custom_template/style.css?ver=5.2.2" type="text/css" media="all">
+		<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://seiu503.org/wp-includes/wlwmanifest.xml" />
+		<link rel="icon" href="http://seiu503.org/wp-content/uploads/2017/10/cropped-favicon-150x150.png" sizes="32x32" />
+		<link rel="icon" href="http://seiu503.org/wp-content/uploads/2017/10/cropped-favicon-300x300.png" sizes="192x192" />
+		<link rel="apple-touch-icon-precomposed" href="http://seiu503.org/wp-content/uploads/2017/10/cropped-favicon-300x300.png" />
+		<meta name="msapplication-TileImage" content="http://seiu503.org/wp-content/uploads/2017/10/cropped-favicon-300x300.png" />
+	</head>
+	<body>
+		<a href="#maincontent" class="skip-link" tabindex="1">Skip to main content</a>
+
+	  <header>
+	    <div class="container site-banner">
+	        <div class="logo logo--public">
+	            <h1>
+	                <a class="pull-left" href="http://seiu503.org/" title="SEIU Local 503" rel="home">
+	                    <img src="http://seiu503.org/wp-content/uploads/2017/10/logo-w-tag.png" alt="SEIU Local 503">
+	                </a>
+	            </h1>
+	        </div>
+	    </div>
+	  </header>
+
+
+    <div class="container mainpage">
+      <div class="row" id="maincontent">
+				<h2 class="page-title" style="margin-left: 0">Calculate Your New Raise</h2>
+				<p>Despite a year of unprecedented attacks on pubic employees, SEIU 503 members stuck with their union and it paid off. This summer the bargaining team won raises, held the line on healthcare, and made our workplaces safer and more accommodating. <a href="http://seiu503.org/statecontract">Click here for more information on your 2019 contract.</a></p>
+
+				<p>If you are not a member, <a href="https://seiu503.tfaforms.net/10?tfa_267=2019stateraisecalculator">click here to join</a>. Our ability to win wages and benefits comes from all of us standing together in Union. States where people have left their union have lower wages and benefits because they can't bargain from a position of strength. So join today.</p>
+
+				<p>One of our key wins was a package of cost of living increases (COLAs) and steps that will increase wages by an average of X% over the next two years. The calculator below will provide you with an estimate of your raise, based on the average step increase of 4.7%.</p>
+				<hr style="width:100%; height: 1px; color: gray; margin-bottom: 30px"/>
+				<div id="instructions">
+					<h3 class="center">
+						Check box if you are topped out. Then enter your monthly base pay and click Submit.
+					</h3>
+					<p class="center disclaimer">(Calculator input accepts numbers and decimal points only, no commas or dollar signs.)</p>
+					<label for="toppedOut" class="toppedOutLabel cbcontainer" id="toppedOutLabel">
+						<input
+							type="checkbox"
+							name="toppedOut"
+							id="toppedOut"
+							class="toppedOut"
+						>
+						&larr; Check box if you are currently topped out
+						<span class="checkmark"></span>
+					</label>
+				</div>
+				<div class="calc-container">
+			    <div class="outerwrap">
+			      <div class="calculator">
+			      	<div class="message" id="message">
+			      		Total over life of contract:
+			      	</div>
+			        <div class="dispwrap" id="dispwrap">
+			          <input
+			          	id="display"
+			          	class="display"
+			          	type="text"
+			          	pattern="\d*"
+			          	autofocus
+			          ></input>
+			          <div id="exp"></div>
+			        </div>
+			        <div class="keycont">
+			          <button
+			          	class="calcbtn waves-effect waves-light submit"
+			          	id="submit"
+			          	value="submit"
+			          >Submit
+			        	</button>
+			        	<div id="keys">
+				        	<div class="keyrow">
+					          <button class="calcbtn waves-effect waves-light num" id="seven" value="7">7</button>
+					          <button class="calcbtn waves-effect waves-light num" id="eight" value="8">8</button>
+					          <button class="calcbtn waves-effect waves-light num" id="nine" value="9">9</button>
+				        	</div>
+									<div class="keyrow">
+					          <button class="calcbtn waves-effect waves-light num" id="four" value="4">4</button>
+					          <button class="calcbtn waves-effect waves-light num" id="five" value="5">5</button>
+					          <button class="calcbtn waves-effect waves-light num" id="six" value="6">6</button>
+									</div>
+									<div class="keyrow">
+					          <button class="calcbtn waves-effect waves-light num" id="one" value="1">1</button>
+					          <button class="calcbtn waves-effect waves-light num" id="two" value="2">2</button>
+					          <button class="calcbtn waves-effect waves-light num" id="three" value="3">3</button>
+									</div>
+									<div class="keyrow">
+					          <button class="calcbtn waves-effect waves-light num" id="zero" value="0">0</button>
+					          <button class="calcbtn waves-effect waves-light dot num" id="dot" value=".">.</button>
+				        	</div>
+				        </div>
+			          <button
+			          	class="calcbtn waves-effect waves-light start-over"
+			          	id="startOver"
+			          	value="startOver"
+			          >Start Over
+			        	</button>
+			        </div>
+			      </div>
+			    </div>
+  			</div>
+  			<div id="results"> </div>
+  			<div class="disclaimer">
+	  			<p>This calculator is for educational purposes only and should not be taken as financial advice. It provides an estimate based on the average step increase of 4.7%. It does not take into account taxes, FSAs, or other items deducted from your paycheck, and therefore will only provide approximate results.</p>
+
+					<p>If you have questions about your contract, please speak with a steward in your worksite or contact the Member Resource Center at 1-844-503-SEIU (7348).</p>
+				</div>
+      </div> <!-- /row -->
+    </div> <!-- container mainpage -->
+
+
+	<footer>
+		<div class="footer-lower container-fluid">
+		  <div class="footer-social-media">
+				<div class="sm-icon">
+          <a href="https://www.twitter.com/SEIULocal503" title="SEIU 503 Twitter" class="sm-icon fab fa-twitter" target="_blank"></a>
+          <a href="https://www.facebook.com/SEIULocal503" title="SEIU 503 Facebook" class="sm-icon fab fa-facebook-f" target="_blank"></a>
+          <a href="https://www.youtube.com/user/SEIULocal503" title="SEIU 503 YouTube" class="sm-icon fab fa-youtube" target="_blank"></a>
+          <a href="https://www.flickr.com/photos/seiulocal503" title="SEIU 503 Flickr" class="sm-icon fab fa-flickr" target="_blank"></a>
+        </div><!-- /.row -->
+			</div>
+			<a href="http://www.seiu.org/privacy/" class="privacy-link">Privacy</a>
+		</div><!-- /.container-fluid -->
+	</footer>
+	</body>
+</html>

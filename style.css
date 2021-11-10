@@ -1,0 +1,450 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.site-banner, .footer-lower {
+	width: 100%;
+  background: #531078;
+  height: 109px;
+  padding: 10px;
+  }
+
+.page-title {
+  margin-left: 0px !important;
+}
+
+.footer-lower {
+  display: flex;
+  justify-content: center;
+}
+
+.privacy-link {
+  display: block;
+  text-align: center;
+  margin: 5px 0;
+  font-family: "Source Sans Pro",sans-serif;
+  text-decoration: none;
+  margin-bottom: 1px dotted rgba(255,255,255,.5);
+  color: rgba(255,255,255,.5);
+  font-size: 13px;
+}
+
+.privacy-link:hover {
+  color: #ffce04;
+  text-decoration: none;
+}
+
+.container {
+	margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #333;
+  font-size: 15px;
+  font-family: "Source Sans Pro",sans-serif;
+  line-height: 1.5;
+}
+
+.pull-left {
+  float: left!important;
+}
+
+.logo img {
+  margin-bottom: 15px;
+  width: 193px;
+  height: 58px;
+}
+
+.skip-link {
+  background-color: #d3d3d3;
+  color: #531078;
+  font-weight: 700;
+  position: absolute;
+  padding: 5px 40px;
+  left: -999vw;
+  display: block;
+}
+
+.mainpage {
+  padding: 40px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+}
+
+@media only screen and (min-width: 48em) {
+	.container {
+	  width: 49rem;
+	}
+
+	.logo {
+  margin-left: 10px;
+}
+}
+
+
+@media only screen and (min-width: 64em) {
+	.container {
+	  width: 65rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.container {
+	  width: 100%!important;
+	}
+}
+
+.footer-social-media {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-lower {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.sm-icon {
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: all ease-out .15s;
+  -o-transition: all ease-out .15s;
+  transition: all ease-out .15s;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 8px 2px;
+  color: #fff;
+  text-align: center;
+  line-height: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+ .sm-icon:hover, .sm-icon:focus {
+    border-color: white;
+    color: #ffce04;
+    text-decoration: none;
+  }
+
+  .sm-icon:after {
+    position: relative;
+    bottom: 3px;
+    font-size: 26px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+  }
+}
+
+
+.social-media {
+    position: absolute;
+    top: 23px;
+    right: 16px;
+    display: block;
+}
+
+.sm-icon--facebook {
+        padding: 8px 0 0 0;
+      }
+.sm-icon--facebook:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: '\f09a';
+}
+
+.sm-icon--twitter:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+        content: '\f099';
+    }
+.sm-icon--youtube:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+        content: '\f167';
+    }
+.sm-icon--flickr:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+        content: '\f16e';
+    }
+
+.thankYou {
+  padding: 20px;
+}
+
+.toppedOutLabel {
+  width: 100%;
+  font-size: 18px;
+  color: #531078;
+  font-family: Lato,sans-serif;
+  margin-bottom: 40px;
+}
+
+.cbcontainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.cbcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a purple background */
+.container input:checked ~ .checkmark {
+  background-color: #983eca;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 10px;
+  top: 3px;
+  width: 7px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* calculator */
+button {
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 100;
+}
+
+.calculator {
+  padding: 40px 20px 30px 20px;
+  width: 300px;
+  background: linear-gradient( #983eca, #531078);
+  box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -2px -9px 18px 0.2px #2c3e50;
+  margin: auto;
+  border-radius: 20px;
+
+}
+
+.calc-container {
+  width: 100%;
+  display: flex;
+  padding-bottom: 60px;
+}
+
+.outerwrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.dispwrap {
+  border: 1px solid #fff;
+  border-radius: .15em;
+  margin: 0 10px 30px 10px;
+  min-height: 5em;
+  background: linear-gradient(#2ecc71, #27ae60);
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+  letter-spacing: 1px;
+  transition: all 1s ease-in-out;
+}
+
+#instructions {
+  transition: height 1s ease-in-out;
+}
+
+#display {
+  font-size: 2.4em;
+  width: 100%;
+  margin: auto;
+  padding: 22px 20px 0 20px;
+  display: block;
+  text-align: right;
+  text-shadow: 0px 2px 1px rgba(0,0,0,0.2);
+}
+
+.display {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-family: Orbitron, monospace;
+}
+
+.message {
+  font-family: Lato, sans-serif;
+  font-weight: 900;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  font-size: 1.2em;
+  margin-top: -40px;
+  display: none;
+}
+
+#keys {
+  height: 192.75px;
+  transition: height 1s ease-in-out;
+}
+
+#exp {
+  font-size: .75em;
+  width: 100%;
+  text-align: right;
+  padding: 0 20px 5px 20px;
+  color: rgba(255,255,255,0.7);
+}
+
+.calcbtn {
+  margin: 4px;
+  border: 1px solid #fff;
+  text-align: center;
+  padding: .7rem .5rem .5rem .5rem;
+  background-color: #e67e22;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  width: 29.25%;
+  height: 40.1875px;
+  transition: all 1s ease-in-out;
+}
+
+.keyrow {
+  display: flex;
+}
+
+
+.calcbtn:hover {
+    background-color: #FFA726;
+    box-shadow: rgba(0, 0, 0, 0.137255) 0px 3px 3px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 7px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -1px;
+}
+
+.btn:focus {
+    background-color: #E65100;
+}
+
+.submit {
+  width: 238px;
+  padding: 1rem 0;
+  background-color: #FFA726;
+  height: 3rem;
+}
+.submit:hover {
+  background-color: #ffce04;
+}
+
+.start-over {
+  width: 238px;
+  padding: 0 0;
+  border: 0;
+  background-color: #b483dc;
+  color: #531078;
+  height: 0rem;
+  transition: all 1s ease-in-out;
+}
+.start-over:hover {
+  background-color: #e3ccf5;
+  color: #531078;
+}
+
+
+#results {
+  font-size: 2em;
+}
+
+.disclaimer {
+  font-size: .9em;
+  color: gray;
+}
+
+#equals {
+  position: relative;
+  top: -43px;
+  left: 186px;
+  height: 82px;
+}
+
+#three {
+/*  margin-right: 40px;*/
+}
+
+#zero {
+width: 61.5%;
+
+}
+
+#dot {
+
+}
+
+.op {
+  font-size: 1.2em;
+/*  padding-top: 0;*/
+}
+
+#multiply {
+  font-size: .8em;
+  height: 40.1875px;
+}
+
+.keycont {
+  padding-left: 7px;
+  margin: auto;
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
