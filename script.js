@@ -22,11 +22,8 @@ function setInputFilter(textbox, inputFilter) {
 }
 
 // set global variables
-let COLA1 = .0215;
-let COLA2 = .03;
-let step  = .047;
-let toppedOut = false;
-let basePay = 0;
+let filingStatus = undefined;
+let annualIncome = 0;
 let prevNum = null;
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -40,16 +37,22 @@ document.addEventListener("DOMContentLoaded", function(){
   let buttonsNodeList = document.getElementsByClassName("calcbtn");
   let buttons = Array.from(buttonsNodeList);
   let results = document.getElementById("results");
-  let toppedOutEl = document.getElementById("toppedOut");
   let instructions = document.getElementById("instructions");
   let numbersNodeList = document.getElementsByClassName("num");
   let numbers = Array.from(numbersNodeList);
+  let filingStatusEl = document.querySelector('input[name = "filingStatus"]:checked');
 
-  // listen for changes to toppedOut
-  toppedOutEl.addEventListener("change", function(event) {
-    toppedOut = this.checked;
-    console.log(`toppedOut: ${toppedOut}`);
-  });
+  // find selected radio option for filingStatus
+  let filingStatus = document.querySelector('input[name = "filingStatus"]:checked').value;
+
+  // listen for changes to filingStatus
+  var radios = document.getElementsByClassName('filingStatus');
+  for(var i = 0, max = radios.length; i < max; i++) {
+    radios[i].onclick = function() {
+      filingStatus = this.value;
+      console.log(`filingStatus: ${filingStatus}`);
+      }
+  }
 
 
   // Restrict input to digits and '.' with regex filter.
@@ -218,7 +221,8 @@ document.addEventListener("DOMContentLoaded", function(){
     startOver.setAttribute("style", "height:3rem; padding: 1rem 0; border: 1px solid white");
     dispwrap.setAttribute("style", "margin-bottom: 0;");
     instructions.setAttribute("style", "height: 0; display:none;");
-    message.setAttribute("style", "display:block;");
+    messageStart.setAttribute("style", "height: 0; display:none;");
+    messageEnd.setAttribute("style", "display:block;");
     let totalLifeOfContractAmount = totalLifeOfContract();
     displayEl.value = totalLifeOfContractAmount;
     let firstYearRaiseAmount = firstYearRaise();

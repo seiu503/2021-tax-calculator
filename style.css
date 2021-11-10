@@ -213,6 +213,12 @@ img {
   width: 0;
 }
 
+.radioContainer {
+  margin:  auto;
+  width:  300px;
+  padding-bottom:  40px;
+}
+
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
@@ -320,7 +326,7 @@ button {
   font-family: Orbitron, monospace;
 }
 
-.message {
+.messageStart, .messageEnd {
   font-family: Lato, sans-serif;
   font-weight: 900;
   text-align: center;
@@ -328,6 +334,11 @@ button {
   padding: 20px;
   font-size: 1.2em;
   margin-top: -40px;
+}
+.messageStart {
+  display: block;
+}
+.messageEnd {
   display: none;
 }
 
