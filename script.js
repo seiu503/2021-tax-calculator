@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   // listen for changes to display
   displayEl.addEventListener("change", function(event) {
-    basePay = Number(this.value);
+    annualIncome = Number(this.value);
   });
 
   // number button functionality
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function(){
     num.addEventListener("click", function(event) {
       console.log(event.target.value);
       val = event.target.value;
-      displayVal = basePay.toString();
+      displayVal = annualIncome.toString();
 
       // decimal point can only be used once
       if (prevNum === "." && displayVal.indexOf('.') == -1) {
@@ -87,123 +87,67 @@ document.addEventListener("DOMContentLoaded", function(){
       displayEl.value = displayVal;
       console.log(displayEl.value);
 
-      basePay = parseFloat(displayVal);
-      console.log(typeof basePay);
-      console.log(`basePay: ${basePay}`);
+      annualIncome = parseFloat(displayVal);
+      console.log(typeof annualIncome);
+      console.log(`annualIncome: ${annualIncome}`);
       prevNum = val;
     })
   );
 
 
   // formulas
-  function monthlyRaise(basePayVar, year) {
-    if (!basePayVar) {basePayVar = basePay}
-    if (year !== 2 && toppedOut) {
-      // formula for raise in year 1 for topped out (COLA1 only, no step)
-      let raise = basePayVar * COLA1;
-      return Number(raise);
-    } else if (year !== 2) {
-      // formula for raise in year 1 for not topped out (COLA1 plus step)
-      let raise = (basePayVar * COLA1) + (basePayVar * step);
-      return Number(raise);
-    } else {
-      // formula for raise in year 2 (COLA2 + everybody gets a step)
-      let raise = (basePayVar * COLA2) + (basePayVar * step);
-      return Number(raise);
+
+  const federalTaxBrackets = {
+    rates: [10, 12, 22, 24, 32, 35]
+    single: [0, 9950, 40525, 86375, 164925, 209425],
+    joint: [0, 19900, 81050, 172750, 329850,418850]
+  };
+
+  const stateTaxBrackets = {
+    rates: [5, 7, 9, 9.9]
+    single: [0, 3550, 8900, 125000],
+    joint: [0, 7100, 17800, 250000]
+  };
+
+  const federalTaxAmount = () => {
+    console.log(`running fTA function`);
+    let standardDeduction = 0;
+    if (filingStatus === "single") {
+      standardDeduction =  12400;
+    } else if (filingStatus === "joint") {
+      standardDeduction =  24800;
+    } else if (filingStatus === "hoh") {
+      standardDeduction =  18650;
     }
-  }
+    console.log(`standardDeduction: ${standardDeduction}`);
+    console.log(`annualIncome: ${annualIncome}`);
+    let aGI = annualIncome - standardDeduction;
+    console.log(`aGI: ${aGI}`);
+    const marginalTaxRate = () => {
 
-  function newBasePay(monthlyRaiseAmount, basePayVar) {
-    if (!basePayVar) {basePayVar = basePay}
-    const monthlyRaise_ = Number(monthlyRaiseAmount);
-    let newPay = basePayVar + monthlyRaise_;
-    return newPay;
-  }
-
-  function firstYearRaise() {
-    const firstYearRaiseAmount = monthlyRaise();
-    return firstYearRaiseAmount;
-  }
-
-  function firstYearBasePay() {
-    const monthlyRaiseAmount = monthlyRaise();
-    const firstYearBasePayAmount = newBasePay(monthlyRaiseAmount);
-    return firstYearBasePayAmount;
-  }
-
-  function secondYearRaise(firstYearBasePayAmount) {
-    const basePayAmount = Number(firstYearBasePayAmount);
-    const secondYearRaiseAmount = monthlyRaise(basePayAmount, 2);
-    return secondYearRaiseAmount;
-  }
-
-  function secondYearBasePay(firstYearBasePayAmount) {
-    const basePayAmount = Number(firstYearBasePayAmount);
-    const secondYearRaiseAmount = Number(monthlyRaise(basePayAmount, 2));
-    const secondYearBasePayAmount = Number(basePayAmount + secondYearRaiseAmount).toFixed(2);
-    return Number(secondYearBasePayAmount);
-  }
-
-  function totalLifeOfContract() {
-
-    let lifeOfContract = 0;
-
-    if (!toppedOut) {
-      let firstCOLATotalImpact = basePay * COLA1 * 24;
-      console.log(`firstCOLATotalmpact: ${firstCOLATotalImpact}`);
-
-      let baseRateAfterFirstCOLA = basePay + (basePay * COLA1);
-      console.log(`baseRateAfterFirstCOLA: ${baseRateAfterFirstCOLA}`);
-
-      let firstStepTotalImpact = baseRateAfterFirstCOLA * step * 18;
-      console.log(`firstStepTotalImpact: ${firstStepTotalImpact}`);
-
-      let baseRateAfterFirstStep = baseRateAfterFirstCOLA + (baseRateAfterFirstCOLA * step);
-      console.log(`baseRateAfterFirstStep: ${baseRateAfterFirstStep}`);
-
-      let secondCOLATotalImpact = baseRateAfterFirstStep * COLA2 * 9;
-      console.log(`secondCOLATotalImpact: ${secondCOLATotalImpact}`);
-
-      let baseRateAfterSecondCOLA = baseRateAfterFirstStep + ( baseRateAfterFirstStep * COLA2);
-      console.log(`baseRateAfterSecondCOLA: ${baseRateAfterSecondCOLA}`);
-
-      let secondStepTotalImpact = baseRateAfterSecondCOLA * step * 6;
-      console.log(`secondStepTotalImpact: ${secondStepTotalImpact}`);
-
-      let baseRateAfterSecondStep = baseRateAfterSecondCOLA + (baseRateAfterSecondCOLA * step);
-      console.log(`baseRateAfterSecondStep: ${baseRateAfterSecondStep}`);
-
-      lifeOfContract = (firstCOLATotalImpact + firstStepTotalImpact + secondCOLATotalImpact + secondStepTotalImpact).toFixed(2);
-      console.log(`lifeOfContractTotal: ${lifeOfContract}`);
-    } else {
-      let firstCOLATotalImpact = basePay * COLA1 * 24;
-      console.log(`firstCOLATotalmpact: ${firstCOLATotalImpact}`);
-
-      let baseRateAfterFirstCOLA = basePay + (basePay * COLA1);
-      console.log(`baseRateAfterFirstCOLA: ${baseRateAfterFirstCOLA}`);
-
-      let secondCOLATotalImpact = baseRateAfterFirstCOLA * COLA2 * 9;
-      console.log(`secondCOLATotalImpact: ${secondCOLATotalImpact}`);
-
-      let baseRateAfterSecondCOLA = baseRateAfterFirstCOLA + (baseRateAfterFirstCOLA * COLA2);
-      console.log(`baseRateAfterSecondCOLA: ${baseRateAfterSecondCOLA}`);
-
-      let secondStepTotalImpact = baseRateAfterSecondCOLA * step * 6;
-      console.log(`secondStepTotalImpact: ${secondStepTotalImpact}`);
-
-      let baseRateAfterSecondStep = baseRateAfterSecondCOLA + (baseRateAfterSecondCOLA * step);
-      console.log(`baseRateAfterSecondStep: ${baseRateAfterSecondStep}`);
-
-      lifeOfContract = (firstCOLATotalImpact + secondCOLATotalImpact + secondStepTotalImpact).toFixed(2);
-      console.log(`lifeOfContractTotal: ${lifeOfContract}`);
     }
-
-    return lifeOfContract;
+    return aGI * marginalTaxRate;
   }
+
+  const stateTaxAmount = () => {
+    let standardDeduction = 0;
+    if (filingStatus === "single") {
+      standardDeduction =  12400;
+    } else if (filingStatus === "joint") {
+      standardDeduction =  24800;
+    } else if (filingStatus === "hoh") {
+      standardDeduction =  18650;
+    }
+    console.log(`standardDeduction: ${standardDeduction}`);
+    let aGI = annualIncome - standardDeduction;
+    console.log(`aGI: ${aGI}`);
+  }
+
+  let totalTaxAmount = federalTaxAmount() + stateTaxAmount();
 
   // generate results string and message
-  function resultsString(firstYearRaiseAmount, secondYearRaiseAmount, lifeOfContractTotal, secondYearBasePayAmount) {
-    return `<p>If your base pay is $${basePay}${toppedOut ? " and you are topped out," : ","} your total raise in the first year of the contract${toppedOut ? " after your step increase" : ""} will be <strong>$${firstYearRaiseAmount.toFixed(2)}</strong> per month. In the second year of the contract after your step increase it will be <strong>$${secondYearRaiseAmount.toFixed(2)}</strong> per month. Over the two years of the contract this adds up to an extra <strong>$${lifeOfContractTotal} in your pocket.</strong> And by July 1, 2021, your new monthly base pay will be <strong>$${secondYearBasePayAmount.toFixed(2)}</strong></p>`
+  function resultsString(annualIncome, federalTaxAmount, stateTaxAmount, totalTaxAmount) {
+    return `<p>If your combined annual household income is $${annualIncome}, the Federal taxes owed on your hazard pay check will be approximately <strong>$${federalTaxAmount.toFixed(2)}</strong>. The State taxes will be approximately <strong>$${stateTaxAmount.toFixed(2)}</strong>. The total amount you should set aside for 2021 taxes is <strong>$${totalTaxAmount.toFixed(2)}</strong></p>`
   }
 
   // On reload, reload page
@@ -223,13 +167,11 @@ document.addEventListener("DOMContentLoaded", function(){
     instructions.setAttribute("style", "height: 0; display:none;");
     messageStart.setAttribute("style", "height: 0; display:none;");
     messageEnd.setAttribute("style", "display:block;");
-    let totalLifeOfContractAmount = totalLifeOfContract();
-    displayEl.value = totalLifeOfContractAmount;
-    let firstYearRaiseAmount = firstYearRaise();
-    let firstYearBasePayAmount = firstYearBasePay();
-    let secondYearRaiseAmount = secondYearRaise(firstYearBasePayAmount);
-    let secondYearBasePayAmount = Number(secondYearBasePay(firstYearBasePayAmount));
-    results.innerHTML = resultsString(firstYearRaiseAmount, secondYearRaiseAmount, totalLifeOfContractAmount, secondYearBasePayAmount);
+    displayEl.value = totalTaxAmount;
+    console.log(`federalTaxAmount: ${federalTaxAmount()}`);
+    console.log(`stateTaxAmount: ${stateTaxAmount()}`);
+    console.log(`totalTaxAmount: ${totalTaxAmount}`);
+    results.innerHTML = resultsString(annualIncome, federalTaxAmount(), stateTaxAmount(), totalTaxAmount);
 
   }
 
