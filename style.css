@@ -384,7 +384,7 @@ button {
 
 .submit {
   width: 238px;
-  padding: 1rem 0;
+  padding: .6rem 0 1rem 0;
   background-color: #FFA726;
   height: 3rem;
 }

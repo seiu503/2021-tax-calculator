@@ -63,15 +63,17 @@
 						Choose your filing status. Then enter your total combined annual household income and click Submit.
 					</h3>
 					<p class="center disclaimer">(Calculator input accepts numbers and decimal points only, no commas or dollar signs.)</p>
-					<div class="radioContainer">
-						<h4>What is your tax filing status for 2021?</h4>
-					  <input type="radio" id="single" name="filingStatus" class="filingStatus" value="single">
-					  <label for="single" class="filingStatusLabel">Single or married filing separately</label><br>
-					  <input type="radio" id="joint" name="filingStatus" value="joint" class="filingStatus">
-					  <label for="joint" class="filingStatusLabel">Married filing jointly or qualifying widower</label><br>
-					  <input type="radio" id="hoh" name="filingStatus" value="hoh" class="filingStatus">
-					  <label for="hoh" class="filingStatusLabel">Head of household</label>
-					</div>
+					<form name='radioContainer'>
+						<div class="radioContainer">
+							<h4>What is your tax filing status for 2021?</h4>
+						  <input type="radio" id="single" name="filingStatus" class="filingStatus" value="single" checked="checked">
+						  <label for="single" class="filingStatusLabel">Single or married filing separately</label><br>
+						  <input type="radio" id="joint" name="filingStatus" value="joint" class="filingStatus">
+						  <label for="joint" class="filingStatusLabel">Married filing jointly or qualifying widower</label><br>
+						  <input type="radio" id="hoh" name="filingStatus" value="hoh" class="filingStatus">
+						  <label for="hoh" class="filingStatusLabel">Head of household</label>
+						</div>
+					</form>
 				</div>
 				<div class="calc-container">
 			    <div class="outerwrap">
